@@ -1,5 +1,5 @@
 body {
-    background-image: url("\had.jpg");
+    background-image: url("./imgs/had.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -10,7 +10,7 @@ label {
 
 textarea {
     border: 2px solid blue;
-    background-image: url("\images.jpg");
+    background-image: url("./imgs/images.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
