@@ -1,0 +1,90 @@
+body {
+    background-image: url("\had.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+label {
+    color: red;
+}
+
+textarea {
+    border: 2px solid blue;
+    background-image: url("\images.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: red;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid rgb(22, 16, 112);
+} */
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #ffa500;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+.header {
+    border-bottom: 2px solid black;
+
+    font-family: italic, Verdana, 'sans serif';
+
+}
+
+table {
+    width: 100%;
+    border: 2px solid black;
+    border-spacing: 0ch;
+    border-collapse: collapse;
+    text-align: left;
+    margin: 5px;
+    padding: 5px;
+
+
+}
+
+td:hover {
+    background-color: azure;
+}
+
+input:focus {
+    background-color: rgb(12, 128, 128);
+}
+
+td {
+    border: 2px solid black;
+}
+
+#User {
+    background-color: black;
+}
+
+td+td {
+    background-color: black;
+}
+
+img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    display: block;
+    margin: 0 auto;
+}

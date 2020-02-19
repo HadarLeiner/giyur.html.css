@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<body>
+
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+        <!-- <title> a log paper<</title> -->
+        <style>
+            * {
+                text-align: center;
+            }
+
+            div {
+                border-bottom: 1px solid black;
+                padding: 20px;
+            }
+
+            div input {
+                float: rigth;
+                padding: 2px;
+                padding-right: 2px;
+                text-align: right;
+                border: 0ch;
+            }
+
+            .bor {
+                border: 1px solid black;
+                background: rgb(213, 221, 231);
+                padding: 10px;
+                padding-right: 5px;
+                padding-left: 5px;
+                margin: auto;
+                width: 300px;
+
+            }
+
+            .hide {
+                display: none;
+            }
+
+            table {
+                margin-left: auto;
+                margin-right: auto
+            }
+
+            div img {
+                width: 20px;
+                margin: 2px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form id="myForm">
+            <h4>
+                דף הרשמה
+
+            </h4>
+            <br>
+            <div id="personal">
+                <h6>
+                    פרטים אישיים
+                </h6>
+                <br>
+                <div class="bor"> <input type="text" name="שם" id="userName">שם פרטי</div>
+
+                שם משפחה:<br>
+                <input type="text" name="last name"><br>
+                עיר מגורים:<br>
+                <input type="text" name="adress"> <br>
+
+                מין:<br>
+                <input list="gender">
+
+                <datalist id="gender">
+                    <option value=" זכר">
+                    <option value="נקבה">
+                    <option value="אחר">
+
+                </datalist>
+                <br>
+                <div class="bor"> <input type="text" name="סיסמא" id="password"> הגדר סיסמא<img class=""
+                        src="/pickture/login_password_icon_307245.png"></div>
+                <br>
+                <div class="bor"> <input type="password" name="סיסמא" id="check" onclick="show()"> אשר סיסמא </div>
+                <span id="checkP" class="hide">בודק סיסמא</span>
+                <br>
+            </div>
+            <div>
+                <h6>
+                    פרטי התקשרות
+                </h6>
+                <br>
+                <input type="tel" name="tel" value="טלפון" onclick="checkPass()" pattern="[0-9]{3}-[0-9]{7}"><br>
+                <br>
+                <input type="email" name="email" value="אי-מייל" required><br>
+                <br>
+                <br>
+            </div>
+            <div>
+                <h6>
+                    לימודים וניסיון </h6>
+                <br>
+                מקצוע
+                <br>
+                <input type="text" name="profession"><br>
+                התמחות
+                <br>
+                <input type="text" name="profession"><br>
+                תעודות
+                <br>
+                <input type="text" name="profession"><br>
+                ניסיון קודם
+                <br>
+                <input type="text" name="profession"><br>
+                המלצות
+                <br>
+                <input type="text" name="profession"><br>
+            </div>
+            <div>
+                <h6>
+                    זמינות </h6>
+                <br>
+                הימים בהם אני פנוי
+                <br>
+                <div>
+
+                    <table>
+                        <tr id="days">
+                            <td>ראשון</td>
+                            <td> <input type="checkbox" id="sun" onclick="checkbox()"></td>
+                        </tr>
+                        <tr id="days">
+                            <td>שני</td>
+                            <td> <input type="checkbox" id="mon" onclick="checkbox()"></td>
+                        </tr>
+                        <tr id="days">
+                            <td>שלישי</td>
+                            <td> <input type="checkbox" id="tues" onclick="checkbox()"></td>
+                        </tr>
+                        <tr id="days">
+                            <td>רביעי</td>
+                            <td> <input type="checkbox" id="wednes" onclick="checkbox()"></td>
+                        </tr>
+                        <tr id="days">
+                            <td>חמישי</td>
+                            <td> <input type="checkbox" id="thurs" onclick="checkbox()"></td>
+                        </tr>
+                        <tr id="days">
+                            <td>שישי</td>
+                            <td> <input type="checkbox" id="fri" onclick="checkbox()"></td>
+
+                        </tr>
+
+
+                    </table>
+                </div>
+                <br>
+                תאריך עדכון<br>
+                <input type="date" name="profession"><br>
+            </div>
+            <button type="submit" id="submitBtn"> הרשמה </button>
+        </form>
+        <script>
+            document.cookie
+        </script>
+        <script>
+            function checkPass() {
+                let personal = document.getElementById("checkP")
+                if (password.value === check.value) {
+                    personal.innerHTML = " ";
+                    personal.append("הסיסמאות תואמות")
+                } else {
+                    personal.innerHTML = " ";
+                    personal.append("הסיסמאות אינן תואמות")
+                }
+            };
+
+            function show() {
+                checkP.classList.remove('hide')
+            }
+        </script>
+        <script>
+            $('#submitBtn').click(function (e) {
+                // make sure the form is not submitted
+                e.preventDefault();
+                // run the form validations
+                document.getElementById('myForm').checkValidity();
+                // check if the form is valid
+                if (document.getElementById('myForm').reportValidity()) {
+                    // form is valid, create a post request
+                    $.ajax({
+                        type: "post",
+                        url: "https://obscure-falls-91518.herokuapp.com/registration/register",
+                        // the user data 
+                        data: {
+                            userName: $('#userName').val(),
+                            password: $('#password').val()
+                        },
+                        complete: // this function is called when the request is finished
+                            function (xhr, status) {
+                                // check if there is an error
+                                if (status === 'error')
+                                    alert(xhr.responseText);
+                                else
+                                    alert('OK');
+                            }
+                    });
+                }
+            });
+        </script>
+
+
+
+    </body>
+
+    </html>
